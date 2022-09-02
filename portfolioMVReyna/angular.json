@@ -23,9 +23,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "portfolioMVReyna/node_modules/bootstrap-5.2.0-dist/css/bootstrap.css"
             ],
-            "scripts": []
+            "scripts": [
+              "portfolioMVReyna/node_modules/bootstrap-5.2.0-dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {

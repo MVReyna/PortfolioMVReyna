@@ -4,6 +4,8 @@
 
 div {
     background-color: rgb(146, 146, 127);
+    border-style: groove;
+    border-radius: 15px;
 }
 
 h3,

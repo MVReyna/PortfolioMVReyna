@@ -12,7 +12,11 @@ public class dtoExperiencia {
     
     
     //Constructores
+
+    public dtoExperiencia() {
+    }
     
+        
     public dtoExperiencia (String nombreE, String descripcionE){
         this.nombreE = nombreE;
         this.descripcionE = descripcionE;

@@ -1,4 +1,3 @@
-
 package com.portfolio.mvreyna.Security.jwt;
 
 import com.portfolio.mvreyna.Security.Entity.UsuarioPrincipal;
@@ -21,6 +20,7 @@ public class JwtProvider {
     
     @Value("${jwt.secret}")
     private String secret;
+    
     @Value("${jwt.expiration}")
     private int expiration;
     

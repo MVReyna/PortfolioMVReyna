@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.portfolio.mvreyna.Security.Entity;
 
 import com.portfolio.mvreyna.Security.Enums.RolNombre;
@@ -14,7 +11,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Rol {
+public class Rol{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;

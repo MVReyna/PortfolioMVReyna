@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,7 +43,7 @@ public class CExperiencia {
        Experiencia experiencia = new Experiencia (dtoExp.getNombreE(),dtoExp.getDescripcionE());
        sExperiencia.save(experiencia);
        
-       return new ResponseEntity(new Mensaje("Expewriencia agregada"),HttpStatus.OK);
+       return new ResponseEntity(new Mensaje("Experiencia agregada"),HttpStatus.OK);
        
     }
     
@@ -66,14 +67,13 @@ public class CExperiencia {
       return new ResponseEntity(new Mensaje("Experiencia actualizada"),HttpStatus.OK);
     }
     
-    
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id){
          //Validaci+on si existe ID
        if(!sExperiencia.existsById(id))
            return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
        
        sExperiencia.delete(id);
-       
-       return new ResponseEntity(new Mensaje("Experiencia eliminada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Experiencia eliminada"), HttpStatus.OK);
     }
 }

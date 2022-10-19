@@ -25,7 +25,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 public class MainSecurity extends WebSecurityConfigurerAdapter{
     @Autowired
-    UserDetailsImpl userDetialsServiceImp;
+    UserDetailsImpl userDetailsServiceImp;
+    
     @Autowired
     JwtEntryPoint jwtEntryPoint;
     
@@ -43,7 +44,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/auth/**").permitAll()
+                .antMatchers("**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
@@ -59,7 +60,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetialsServiceImp).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsServiceImp).passwordEncoder(passwordEncoder());
     }
 
     @Bean
@@ -67,6 +68,5 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
-    
     
 }

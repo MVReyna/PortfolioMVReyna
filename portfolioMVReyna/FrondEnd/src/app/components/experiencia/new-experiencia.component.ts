@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Experiencia } from 'src/app/Model/experiencia';
-import { SExperienicaService } from 'src/app/service/s-experienica.service';
+import { SExperienciaService } from 'src/app/service/s-experienica.service';
 
 @Component({
   selector: 'app-new-experiencia',
@@ -12,7 +12,7 @@ export class NewExperienciaComponent implements OnInit {
   nombreE: string='';
   descripcionE: string='';
 
-  constructor(private sExperiencia:SExperienicaService, private router:Router) { }
+  constructor(private sExperiencia:SExperienciaService, private router:Router) { }
 
   ngOnInit(): void {
   }

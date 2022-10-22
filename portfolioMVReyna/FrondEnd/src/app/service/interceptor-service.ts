@@ -3,9 +3,9 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { TokenService } from "./token.service";
 
-@Injectable([
-    providedIn: 'root'
-])
+@Injectable({
+  providedIn: 'root'
+})
 
 export class InterceptorService {
     constructor (private tokenService:TokenService){}

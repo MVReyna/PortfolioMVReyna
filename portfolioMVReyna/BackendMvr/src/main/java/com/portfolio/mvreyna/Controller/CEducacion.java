@@ -33,7 +33,7 @@ public class CEducacion {
     }
     
     @GetMapping("/detail/{id}")
-    public ResponseEntity<?>getById(@PathVariable("id") int id){
+    public ResponseEntity<Educacion>getById(@PathVariable("id") int id){
         if(!sEducacion.existsById(id)){
             return new ResponseEntity(new Mensaje("No existe el ID"),HttpStatus.BAD_REQUEST);
         }
@@ -75,13 +75,14 @@ public class CEducacion {
        }
         //Compara las experiencia para no duplicar
        if(sEducacion.existsByNombreEdu(dtoEdu.getNombreEdu())&& sEducacion.getByNombreEdu(dtoEdu.getNombreEdu()).get().getId()!=id){
-           return new ResponseEntity(new Mensaje("Esa nombre ya existe"),HttpStatus.BAD_REQUEST);
+           return new ResponseEntity(new Mensaje("El nombre ya existe"),HttpStatus.BAD_REQUEST);
        }
         //No permite campos vacios
        if(StringUtils.isBlank(dtoEdu.getNombreEdu())){
            return new ResponseEntity(new Mensaje("El nombre es obligatorio"),HttpStatus.BAD_REQUEST);
        }
       Educacion educacion= sEducacion.getOne(id).get();
+      
       educacion.setNombreEdu(dtoEdu.getNombreEdu());
       educacion.setDescripcionEdu(dtoEdu.getDescripcionEdu());
       

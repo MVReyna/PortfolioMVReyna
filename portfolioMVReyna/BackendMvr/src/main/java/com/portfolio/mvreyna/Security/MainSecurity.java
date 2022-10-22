@@ -54,8 +54,8 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        super.configure(web); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    protected AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
     }
 
     @Override

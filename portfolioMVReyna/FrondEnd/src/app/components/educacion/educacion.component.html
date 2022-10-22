@@ -1,52 +1,31 @@
 <div class="row">
     <h1>Educación</h1>
-    <div class="col-lg-6">
-        <h2>En programación y robótica</h2>
-        <ul>
-            <li>
-                <h3>Estudio 1</h3>-
-                <h4>(years)</h4>
-            </li>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo exercitationem voluptatem placeat veritatis, saepe laudantium ipsum accusantium beatae nesciunt vel cum quas, doloribus dolores illo facilis ipsa nulla? Fugiat, dolorem?</p>
-        </ul>
-        <ul>
-            <li>
-                <h3>Estudio 2</h3>-
-                <h4>(years)</h4>
-            </li>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo exercitationem voluptatem placeat veritatis, saepe laudantium ipsum accusantium beatae nesciunt vel cum quas, doloribus dolores illo facilis ipsa nulla? Fugiat, dolorem?</p>
-        </ul>
-        <ul>
-            <li>
-                <h3>Estudio 3</h3>-
-                <h4>(years)</h4>
-            </li>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo exercitationem voluptatem placeat veritatis, saepe laudantium ipsum accusantium beatae nesciunt vel cum quas, doloribus dolores illo facilis ipsa nulla? Fugiat, dolorem?</p>
-        </ul>
+
+    <div class="col-lg-2">
+        <button class="btn btn-dark" type="button" routerLink="/nuevaeducación" *ngIf="isLogged">
+          Agregar Educación
+      </button>
     </div>
 
-    <div class="col-lg-6">
-        <h2>Profesional</h2>
-        <ul>
-            <li>
-                <h3>Estudio 1</h3>-
-                <h4>(years)</h4>
-            </li>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo exercitationem voluptatem placeat veritatis, saepe laudantium ipsum accusantium beatae nesciunt vel cum quas, doloribus dolores illo facilis ipsa nulla? Fugiat, dolorem?</p>
-        </ul>
-        <ul>
-            <li>
-                <h3>Estudio 2</h3>-
-                <h4>(years)</h4>
-            </li>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo exercitationem voluptatem placeat veritatis, saepe laudantium ipsum accusantium beatae nesciunt vel cum quas, doloribus dolores illo facilis ipsa nulla? Fugiat, dolorem?</p>
-        </ul>
-        <ul>
-            <li>
-                <h3>Estudio 3</h3>-
-                <h4>(years)</h4>
-            </li>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo exercitationem voluptatem placeat veritatis, saepe laudantium ipsum accusantium beatae nesciunt vel cum quas, doloribus dolores illo facilis ipsa nulla? Fugiat, dolorem?</p>
-        </ul>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-11">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let Educacion of educacion">
+                    <td>
+                        <h2> {{Educacion.nombreEdu}}</h2>
+                    </td>
+                    <td>{{Educacion.descripcionEdu}}</td>
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-light" routerLink="/editedu/{{Educacion.id}}">
+                          <i class="bi bi-pencil-fill"></i>Editar</button>
+                    </td>
+                    <td *ngIf="isLogged">
+                        <button class="btn btn-danger" (click)="borrar(Educacion.id)">
+                      <i class="bi bi-trash-fill"></i> Borrar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

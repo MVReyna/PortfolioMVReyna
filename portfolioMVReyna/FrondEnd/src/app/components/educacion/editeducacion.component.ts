@@ -9,17 +9,18 @@ import { EducacionService } from 'src/app/service/educacion.service';
   styleUrls: ['./editeducacion.component.css']
 })
 export class EditeducacionComponent implements OnInit {
-  educacion: Educacion = null;
+  educacion: Educacion = null ;
 
   constructor(
-    private sEducacion:EducacionService,
+    private educacionS:EducacionService,
     private activatedRouter:ActivatedRoute,
     private router:Router
     ) { }
 
   ngOnInit(): void {
     const id = this.activatedRouter.snapshot.params['id'];
-    this.sEducacion.details(id).subscribe(data =>{
+    this.educacionS.detail(id).subscribe(
+      data =>{
       this.educacion= data;
     }, err=>{
         alert("Error al modificar");
@@ -29,7 +30,7 @@ export class EditeducacionComponent implements OnInit {
 
   onUpdate(): void {
     const id = this.activatedRouter.snapshot.params['id'];
-    this.sEducacion.update(id, this.educacion).subscribe(data =>{
+    this.educacionS.update(id, this.educacion).subscribe(data =>{
       this.router.navigate(['']);
     }, err=>{
       alert("Error al modificar la educación");

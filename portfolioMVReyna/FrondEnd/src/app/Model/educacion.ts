@@ -1,10 +1,10 @@
 export class Educacion {
   id?: number;
-    nombreEdu: string;
-    descriptionEdu: string;
+  nombreEdu: string;
+  descripcionEdu: string;
 
-    constructor(nombreEdu:string,descriptionEdu:string){
+  constructor(nombreEdu:string,descripcionEdu:string){
         this.nombreEdu= nombreEdu;
-        this.descriptionEdu= descriptionEdu;
+        this.descripcionEdu= descripcionEdu;
     }
 }

@@ -8,7 +8,7 @@ import { Educacion } from '../Model/educacion';
   providedIn: 'root'
 })
 export class EducacionService {
-  URL= environment.URL+'educacion/'
+  URL= environment.URL+'educacion/';
 
   constructor(private httpClient:HttpClient) { }
 
@@ -16,8 +16,8 @@ export class EducacionService {
     return this.httpClient.get<Educacion[]>(this.URL + 'lista');
   }
 
-  public details (id:number):Observable<Educacion[]>{
-    return this.httpClient.get<Educacion[]>(this.URL + `detail/${id}`);
+  public detail (id:number):Observable<Educacion>{
+    return this.httpClient.get<Educacion>(this.URL + `detail/${id}`);
   }
 
   public save (educacion:Educacion):Observable<any>{

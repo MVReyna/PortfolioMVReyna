@@ -11,7 +11,7 @@ export class LogoAPComponent implements OnInit {
   [x: string]: any;
   isLogged= false;
 
-  constructor(private router:Router, private toastService: TokenService) { }
+  constructor(private router:Router, private tokenService: TokenService) { }
 
   ngOnInit(): void {
     if(this.tokenService.getToken()){
@@ -22,7 +22,7 @@ export class LogoAPComponent implements OnInit {
   }
 
   onLogOut(): void {
-    this.tokenService.logOut();
+    this.tokenService.logout();
     window.location.reload();
   }
 

@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:'editedu/:id', component:EditeducacionComponent},
   {path:'newskill', component:NewSkillComponent},
   {path:'editskill/:id', component:EditSkillComponent},
-  {path:'editAcercaDe/:id', component:EditAcercaDeComponent}
+  {path:'editAcercaDe', component:EditAcercaDeComponent}
 ];
 
 @NgModule({

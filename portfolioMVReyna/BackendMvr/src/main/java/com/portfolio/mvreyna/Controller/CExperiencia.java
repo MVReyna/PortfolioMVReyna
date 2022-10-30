@@ -49,6 +49,10 @@ public class CExperiencia {
        if (sExperiencia.existsByNombreE(dtoExp.getNombreE()))
            return new ResponseEntity(new Mensaje("Esa experiencia existe"), HttpStatus.BAD_REQUEST);
        
+       if (StringUtils.isBlank (dtoExp.getDescripcionE())){
+           return new ResponseEntity (new Mensaje("El nombre es obligatorio"),HttpStatus.BAD_REQUEST);
+       }
+       
        Experiencia experiencia = new Experiencia (dtoExp.getNombreE(),dtoExp.getDescripcionE());
        sExperiencia.save(experiencia);
        

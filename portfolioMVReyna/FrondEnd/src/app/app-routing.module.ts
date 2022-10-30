@@ -13,13 +13,13 @@ import { LoginComponent } from './components/login/login.component';
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'login', component:LoginComponent},
-  {path:'nuevaexperiencia',component:NewExperienciaComponent},
+  {path:'nuevaexp',component:NewExperienciaComponent},
   {path:'editexp/:id', component:EditExperienciaComponent},
-  {path:'nuevaEducacion', component: NeweducacionComponent},
+  {path:'nuevaedu', component: NeweducacionComponent},
   {path:'editedu/:id', component:EditeducacionComponent},
-  {path:'newSkill', component:NewSkillComponent},
-  {path:'editskill', component:EditSkillComponent},
-  {path:'editAcercaDe', component:EditAcercaDeComponent}
+  {path:'newskill', component:NewSkillComponent},
+  {path:'editskill/:id', component:EditSkillComponent},
+  {path:'editAcercaDe/:id', component:EditAcercaDeComponent}
 ];
 
 @NgModule({

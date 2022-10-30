@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin
+@CrossOrigin("http://localhost:4200")
 public class AuthController {
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -78,7 +78,7 @@ public class AuthController {
         
         SecurityContextHolder.getContext().setAuthentication(authentication);
         
-        String jwt = jwtProvider.GenerateToken(authentication);
+        String jwt = jwtProvider.generateToken(authentication);
         
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         

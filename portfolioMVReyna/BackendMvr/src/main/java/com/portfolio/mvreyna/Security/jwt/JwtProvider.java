@@ -24,7 +24,7 @@ public class JwtProvider {
     @Value("${jwt.expiration}")
     private int expiration;
     
-    public String GenerateToken(Authentication authentication){
+    public String generateToken(Authentication authentication){
         UsuarioPrincipal usuarioPrincipal=(UsuarioPrincipal) authentication.getPrincipal();
         return Jwts.builder().setSubject(usuarioPrincipal.getUsername())
                 .setIssuedAt(new Date())

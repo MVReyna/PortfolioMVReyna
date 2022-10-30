@@ -10,18 +10,18 @@
     <div class="col-lg-11">
         <table class="table">
             <tbody>
-                <tr *ngFor="let Experiencia of experiencia">
+                <tr *ngFor="let exp of experiencia">
                     <td>
-                        <h2>{{Experiencia.nombreE}}</h2>
+                        <h2>{{exp.nombreE}}</h2>
                     </td>
-                    <td>{{Experiencia.descripcionE}}</td>
+                    <td>{{exp.descripcionE}}</td>
                     <td *ngIf="isLogged">
-                        <button class="btn btn-light" routerLink="editexp/{{Experiencia.id}}">
-                          <i class="bi bi-pencil-fill"></i> EDITAR</button>
+                        <button class="btn btn-light" routerLink="editexp/{{exp.id}}">
+                        <i class="bi bi-pencil-fill"></i> EDITAR</button>
                     </td>
                     <td *ngIf="isLogged">
-                        <button class="btn btn-danger" (click)="delete(Experiencia.id)">
-                          <i class="bi bi-trash-fill"></i> BORRAR</button>
+                        <button class="btn btn-danger" (click)="delete(exp.id)">
+                        <i class="bi bi-trash-fill"></i> BORRAR</button>
                     </td>
                 </tr>
             </tbody>
@@ -29,3 +29,6 @@
     </div>
 
 </div>
+
+
+<tr>

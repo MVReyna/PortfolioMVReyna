@@ -8,5 +8,9 @@ export const environment = {
     authDomain: 'mvrfrontend.firebaseapp.com',
     messagingSenderId: '565380100987',
   },
-  production: true
+  production: true,
+
+
+URL:'https://backendmvr.herokuapp.com/',
+
 };

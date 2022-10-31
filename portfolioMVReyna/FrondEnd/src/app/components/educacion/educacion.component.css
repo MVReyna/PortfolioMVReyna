@@ -1,12 +1,16 @@
 .row {
     padding: 20px;
+    background-color: rgb(146, 146, 127);
+    border-style: groove;
+    border-radius: 15px;
 }
 
-div {
+
+/*div {
     background-color: rgb(146, 146, 127);
-    /*border-style: groove;
-    border-radius: 15px; */
-}
+    border-style: groove;
+    border-radius: 15px;
+}*/
 
 h3,
 h4 {

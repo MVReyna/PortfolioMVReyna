@@ -49,11 +49,13 @@ public class CExperiencia {
        if (sExperiencia.existsByNombreE(dtoExp.getNombreE()))
            return new ResponseEntity(new Mensaje("Esa experiencia existe"), HttpStatus.BAD_REQUEST);
        
-       if (StringUtils.isBlank (dtoExp.getDescripcionE())){
-           return new ResponseEntity (new Mensaje("El nombre es obligatorio"),HttpStatus.BAD_REQUEST);
-       }
+       if (StringUtils.isBlank (dtoExp.getDescripcionE()))
+           return new ResponseEntity (new Mensaje("La descripción es obligatorio"),HttpStatus.BAD_REQUEST);
+        if (sExperiencia.existsByDescripcionE(dtoExp.getDescripcionE()))
+           return new ResponseEntity(new Mensaje("Esa descripción de la experiencia existe"), HttpStatus.BAD_REQUEST);
        
        Experiencia experiencia = new Experiencia (dtoExp.getNombreE(),dtoExp.getDescripcionE());
+        System.out.println("exp: " + experiencia.toString());
        sExperiencia.save(experiencia);
        
        return new ResponseEntity(new Mensaje("Experiencia agregada"),HttpStatus.OK);
@@ -65,12 +67,19 @@ public class CExperiencia {
         //Validaci+on si existe ID
        if(!sExperiencia.existsById(id))
            return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
-       //Compara las experiencia para no duplicar
+       
+        //Compara las experiencia para no duplicar
        if(sExperiencia.existsByNombreE(dtoExp.getNombreE())&& sExperiencia.getByNombreE(dtoExp.getNombreE()).get().getId()!=id)
            return new ResponseEntity(new Mensaje("Esa experiencia ya existe"),HttpStatus.BAD_REQUEST);
-       //No permite campos vacios
+       if(sExperiencia.existsByDescripcionE(dtoExp.getDescripcionE())&& sExperiencia.getByDescripcionE(dtoExp.getDescripcionE()).get().getId()!=id)
+           return new ResponseEntity(new Mensaje("Esa descripcion ya existe"),HttpStatus.BAD_REQUEST);
+
+       
+        //No permite campos vacios
        if(StringUtils.isBlank(dtoExp.getNombreE()))
            return new ResponseEntity(new Mensaje("El nombre es obligatorio"),HttpStatus.BAD_REQUEST);
+       if(StringUtils.isBlank(dtoExp.getDescripcionE()))
+           return new ResponseEntity(new Mensaje("La descripción es obligatoria"),HttpStatus.BAD_REQUEST);
        
       Experiencia experiencia= sExperiencia.getOne(id).get();
       experiencia.setNombreE(dtoExp.getNombreE());

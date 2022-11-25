@@ -20,9 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/educacion")
-// @CrossOrigin(origins="http://localhost:4200")
-@CrossOrigin(origins="https://mvrfrontend.web.app")
+@RequestMapping("educacion")
+@CrossOrigin(origins={"https://mvrfrontend.web.app/","http://localhost:4200/"})
 
 public class CEducacion {
     @Autowired
@@ -46,16 +45,16 @@ public class CEducacion {
     
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody dtoEducacion dtoEdu){
-       if (StringUtils.isBlank (dtoEdu.getNombreEdu())){
+       if (StringUtils.isBlank (dtoEdu.getNombreEdu()))
            return new ResponseEntity (new Mensaje("El nombre es obligatorio"),HttpStatus.BAD_REQUEST);
-       }
-       if (sEducacion.existsByNombreEdu(dtoEdu.getNombreEdu())){
-           return new ResponseEntity(new Mensaje("Esa educación existe"), HttpStatus.BAD_REQUEST);
-       }
        
-       if (StringUtils.isBlank (dtoEdu.getDescripcionEdu())){
+       if (sEducacion.existsByNombreEdu(dtoEdu.getNombreEdu()))
+           return new ResponseEntity(new Mensaje("Esa educación existe"), HttpStatus.BAD_REQUEST);
+       
+       
+       if (StringUtils.isBlank (dtoEdu.getDescripcionEdu()))
            return new ResponseEntity (new Mensaje("El nombre es obligatorio"),HttpStatus.BAD_REQUEST);
-       }
+       
        
        Educacion educacion = new Educacion(dtoEdu.getNombreEdu(),dtoEdu.getDescripcionEdu());
        sEducacion.save(educacion);
@@ -76,17 +75,17 @@ public class CEducacion {
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoEducacion dtoEdu){
         //Validaci+on si existe ID
-       if(!sEducacion.existsById(id)){
+       if(!sEducacion.existsById(id))
            return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.NOT_FOUND);
-       }
+       
         //Compara las experiencia para no duplicar
-       if(sEducacion.existsByNombreEdu(dtoEdu.getNombreEdu())&& sEducacion.getByNombreEdu(dtoEdu.getNombreEdu()).get().getId()!=id){
+       if(sEducacion.existsByNombreEdu(dtoEdu.getNombreEdu())&& sEducacion.getByNombreEdu(dtoEdu.getNombreEdu()).get().getId()!=id)
            return new ResponseEntity(new Mensaje("El nombre ya existe"),HttpStatus.BAD_REQUEST);
-       }
+       
         //No permite campos vacios
-       if(StringUtils.isBlank(dtoEdu.getNombreEdu())){
+       if(StringUtils.isBlank(dtoEdu.getNombreEdu()))
            return new ResponseEntity(new Mensaje("El nombre es obligatorio"),HttpStatus.BAD_REQUEST);
-       }
+       
       Educacion educacion= sEducacion.getOne(id).get();
       
       educacion.setNombreEdu(dtoEdu.getNombreEdu());

@@ -1,7 +1,3 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
   firebase: {
     projectId: 'mvrfrontend',
@@ -12,9 +8,10 @@ export const environment = {
     authDomain: 'mvrfrontend.firebaseapp.com',
     messagingSenderId: '565380100987',
   },
-  production: false,
+  production: true,
 
-  URL:'http://localhost:8080',
+  URL:'http://localhost:8080/',
+  /*URL:'https://backendmvr.herokuapp.com/', */
 };
 
 /*
